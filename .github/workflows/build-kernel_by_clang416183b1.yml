@@ -107,7 +107,7 @@ jobs:
       if: env.ENABLE_KERNELSU == 'true'
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-        curl -LSs "https://github.com/ReSukiSU/ReSukiSU/blob/main/kernel/setup.sh" | bash -s ${{ env.KERNELSU_TAG }}
+        git clone --depth=1 https://github.com/ReSukiSU/ReSukiSU.git KernelSU bash KernelSU/kernel/setup.sh "${KERNELSU_TAG}"
         echo "UPLOADNAME=-KernelSU" >> $GITHUB_ENV
         
     - name: Setup Configuration for Kernel
